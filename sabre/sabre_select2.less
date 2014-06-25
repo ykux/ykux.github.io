@@ -1,0 +1,237 @@
+
+.select2-container .select2-choice {
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border);
+  padding: @padding-base-vertical 30px @padding-base-vertical @padding-base-vertical;
+
+  border: 1px solid @input-border;
+  white-space: nowrap;
+  line-height: @line-height-base;
+  color: @input-color;
+  text-decoration: none;
+
+  border-radius: @border-radius-base;
+
+  background-clip: padding-box;
+
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+  background-color: @input-bg;
+  background-image: none;
+}
+
+.select2-drop-active,
+.select2-drop.select2-drop-above.select2-drop-active,
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices,
+.select2-container-multi.select2-container-active .select2-choices,
+.select2-container-active.select2-dropdown-open {
+  .form-border-focus()
+}
+.select2-container-active.select2-dropdown-open,
+.select2-container-active.select2-dropdown-open .select2-choice,
+.select2-container-active.select2-dropdown-open .select2-choices,
+.select2-drop-active {
+ .box-shadow(~"inset 0 0 0 0 rgba(0,0,0,.4)") 
+}
+.select2-container-multi .select2-choices {
+  height: auto !important;
+  height: 1%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  border: 1px solid @input-border;
+  border-radius: @border-radius-base;
+  cursor: text;
+  overflow: hidden;
+
+  background-color: @input-bg;
+  background-image: none;
+}
+.select2-dropdown-open .select2-choices,
+.select2-dropdown-open .select2-choice,  {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+}
+.select2-container .select2-choice .select2-arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 1.1em;
+  margin-right: 0.7em;
+  margin-left: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-top:   @caret-width-base solid @dropdown-caret-color;
+  border-right: @caret-width-base solid transparent;
+  border-left:  @caret-width-base solid transparent;
+  border-bottom: 0 solid;
+  border-top-color:     @dropdown-caret-color;
+  border-bottom-color:  @dropdown-caret-color;
+  border-radius: 0;
+}
+.select2-container-multi .select2-choices .select2-search-choice {
+  padding: 6px 12px 6px 26px;
+  margin: 3px 0 3px 5px;
+  position: relative;
+  line-height: 1;
+  color: @gray;
+  cursor: default;
+  border: 1px solid @input-border;
+  border-radius: @border-radius-base;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-clip: padding-box;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  background-color: @btn-default-bg;
+  background-image: none;
+  font-size: @font-size-small;
+}
+.select2-container-multi .select2-search-choice-close {
+  left: 0;
+}
+.select2-search-choice-close {
+  display: inline-block;
+  left: 0;
+
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  font-size: @font-size-small;
+  outline: none;
+  background: none !important;
+  background-image: none !important;
+
+  padding: 2px 4px 4px 3px;
+  margin-top: 4px;
+  margin-left: 6px;
+  cursor: pointer;
+  color: @btn-default-color;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration:none;
+  }
+}
+.select2-search-choice-close:before {
+  content: "\f00d";
+}
+
+.select2-container .select2-choice abbr {
+  display: none;
+  right: 0;
+
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  font-size: @font-size-small;
+  outline: none;
+
+  background: none !important;
+  background-image: none !important;
+
+  
+  margin-top: 9px;
+  margin-right: 23px;
+  color: @btn-default-color;
+  
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration:none;
+  }
+}
+abbr.select2-search-choice-close {
+  left: auto;
+  content: "\f00d"
+}
+  // Links within the dropdown menu
+.select2-drop {
+  font-weight: normal;
+  line-height: @line-height-base;
+  color: @dropdown-link-color;
+  white-space: nowrap; // prevent links from randomly breaking onto new lines
+}
+// Hover/Focus state
+//.dropdown-menu > li > a,//
+.select2-results .select2-highlighted {
+  text-shadow: @btn-default-bg 0px 1px 0px;
+  text-decoration: none;
+  color: @dropdown-link-hover-color;
+  background-color: @dropdown-link-hover-bg;
+}
+.select2-results .select2-result-unselectable .select2-result-label {
+  cursor: auto;
+  padding: 4px 4px 4px 7px;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  color: @dropdown-header-color;
+}
+.select2-results .select2-result-selectable .select2-result-label {
+  cursor: pointer;
+  padding: 3px 20px;
+  font-size: @font-size-base;
+}
+.select2-search {
+  z-index: @zindex-dropdown;
+}
+.select2-drop  {
+  z-index: @zindex-dropdown;
+}
+.select2-drop-mask  {
+  z-index: @zindex-dropdown;
+}
+
+/* new */
+
+.select2-results .select2-highlighted {
+  .transition(0.3s);
+  &:hover,
+  &:focus {
+    .transition(0.3s);
+  }
+  &:focus {
+    .tab-focus();
+  }
+}
+.select2-choices,
+.select2-container {
+  height: @input-height-base;
+  width: 100%;
+}
+.select2-container.form-control {
+  padding: 0;
+  border: none;
+}
+ul.select2-choices.form-control {
+  padding:0;
+  border-left: none;
+}
+
+/* end of select2.css overrides*/

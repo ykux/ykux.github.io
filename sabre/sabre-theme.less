@@ -1,0 +1,564 @@
+
+//
+// Load core variables and mixins
+// --------------------------------------------------
+
+@import "sabre_variables.less";
+@import "sabre_mixins.less";
+
+
+// From v3
+@font-size-xsmall:        ceil(@font-size-base * 0.71); // ~10px For extra small font-size
+
+@alert-inverse-success-bg:		@state-success-text;
+@alert-inverse-success-text:	@state-success-bg;
+@alert-inverse-success-border:	@state-inverse-success-border;
+
+
+a {
+  .transition(0.5s);
+  &:hover,
+  &:focus {
+    .transition(0.5s);
+  }
+  &:focus {
+    .tab-focus();
+  }
+}
+
+/* type.less */
+h1 small.label {
+  font-size: 65%;
+}
+.page-header {
+  margin: 0 0 @line-height-computed;
+}
+
+/* Check dropdown-link-hover-color and dropdown-caret-color #666 */
+
+
+/* forms.less */
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus(); //Update styling
+}
+input[type="file"]:focus {
+  border: 1px solid @input-border;
+  border-radius: @border-radius-base;
+}
+input[type="radio"] {
+  -webkit-border-radius:100%;
+  border-radius:100%;
+
+  &:focus /* TO DO: Is this visible enough*/{
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(116, 133, 141, 0.8);
+    -moz-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(116, 133, 141, 0.8);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(116, 133, 141, 0.8);
+  }
+}
+input[type="checkbox"]:focus {
+  outline: thin solid rgba(0, 0, 0, 0.5);
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.has-error .input-group input[type="text"].form-control:not(:first-child):not(:last-child) {
+  .border-left-radius(@border-radius-base)
+}
+
+.form-control {
+  padding: @padding-base-vertical 30px @padding-base-vertical @padding-base-vertical;
+  vertical-align: middle;
+  box-shadow: none;
+  .transition(~"border-color ease-in-out 0.2s, box-shadow ease-in-out 0.2s");
+}
+
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+// Warning
+.has-warning {
+  .form-control-validation(@text-color; @input-border; @state-warning-bg);
+}
+// Error
+.has-error {
+  .form-control-validation(@text-color; @input-border; @state-danger-bg);
+}
+// Success
+.has-success {
+  .form-control-validation(@text-color; @input-border; @state-success-bg);
+}
+.has-error .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.has-error .radio {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.has-error .radio:first-child {
+  margin-bottom: 10px;
+}
+.has-error .radio:last-child {
+  margin-top: -5px;
+  margin-bottom: 0;
+}
+.has-required [class^="text fa fa-"],
+.has-success [class^="text fa fa-"],
+.has-warning [class^="text fa fa-"],
+.has-error [class^="text fa fa-"] {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 0em;
+  width: 2.6em;
+  height: 100%;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.has-required [class^="text fa fa-"],
+.has-required [class^="fa fa-"] {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 1.2em;
+  padding-right: 0.7em;
+}
+.has-success [class^="text fa fa-"],
+.has-success [class^="fa fa-"]{
+  font-size: 13px;
+  color: @state-success-box;
+  padding-top: 0.9em;
+}
+.has-warning [class^="text fa fa-"],
+.has-warning [class^="fa fa-"] {
+  font-size: 13px;
+  color: @state-warning-box;
+  padding-top: 0.9em;
+}
+.has-error [class^="text fa fa-"],
+.has-error [class^="fa fa-"]{
+  font-size: 22px;
+  color: @state-error-box;
+  padding-top: 0.3em;
+  font-family: times, serif;
+}
+.has-error [class^="text fa fa-"]{
+  width: 1.6em;
+}
+.form-group {
+  margin-bottom: 10px;
+}
+
+/* buttons.less */
+
+// Base styles
+// --------------------------------------------------
+.btn {
+  padding: @padding-base-vertical + 3;
+  line-height: 1em;
+  border-radius: @border-radius-base;
+  .box-shadow(@shadow: inset 0em -0.2rem 0em rgba(0,0,0,0.1));
+  .user-select(none);
+  .box-sizing(none);
+  .transition(all .1s ease);
+
+  &:focus {
+    outline-color: rgba(0, 0, 0, 0.4);
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    -webkit-box-shadow: 0em -0.2rem 0em rgba(0, 0, 0, 0.3) inset;
+    -moz-box-shadow: 0em -0.2rem 0em rgba(0, 0, 0, 0.3) inset;
+    box-shadow: 0em -0.2rem 0em rgba(0, 0, 0, 0.3) inset;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .box-sizing(border-box);
+  }
+
+  &:active,
+  &.active {
+    .box-shadow(none);
+    position: relative;
+    top: 1px;
+  }
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+  border:1px solid @btn-default-border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    text-shadow: #FFF 0px 1px 0px;
+    color: rgba(0, 0, 0, 0.8);
+    border-color: #adadad;
+  }
+
+  &.caret {
+    border-top-color:#666;
+  }
+}
+
+.open .dropdown-toggle.btn-default {
+  color: rgba(0, 0, 0, 0.8);
+  border-color: #adadad;
+}
+
+.btn-primary {
+  color: @btn-default-bg;
+  background-color: #0066B5;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-color: #00589c;
+  }
+}
+
+// Link buttons
+// -------------------------
+.btn-link {
+  .box-shadow(none);
+  .box-sizing(none);
+}
+.btn-link {
+  &:focus,
+  &:hover {
+    .box-shadow(none);
+  }
+}
+
+// Button Sizes
+// --------------------------------------------------
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
+.btn-sm,
+.btn-xs {
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+
+.btn-xs {
+  font-size: @font-size-xsmall;
+}
+
+/* end of buttons.less */
+
+
+/* dropdowns.less */
+
+.caret {
+  border-top-color:     @caret-width-base solid @dropdown-caret-color;
+  border-bottom-color:  @caret-width-base solid @dropdown-caret-color;
+
+}
+// Hover/Focus state
+.dropdown-menu > li > a {
+  &:hover,
+  &:focus {
+    text-shadow: #FFF 0px 1px 0px;
+  }
+}
+
+// Active state
+.dropdown-menu > .active > a {
+  &,
+  &:hover,
+  &:focus {
+    text-shadow: #FFF 0px 1px 0px;
+  }
+}
+
+
+// Dropdown section headers
+.dropdown-header {
+  font-weight: bold;
+}
+
+/* end of dropdowns.less */
+
+/* input-groups.less */
+.form-group.has-success .input-group,
+.form-group.has-warning .input-group,
+.form-group.has-required .input-group,
+.form-group.has-error .input-group {
+  width: 100%;
+}
+
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+  border-radius: @input-border-radius;
+}
+.input-group-addon:first-child {
+  border-radius: @input-border-radius;
+}
+/* end of input-groups.less */
+
+/* navs.less */
+
+// Tabs
+// -------------------------
+.nav {
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @nav-link-hover-bg;
+      border-color: @dropdown-border;
+
+      .caret {
+        border-top-color: @dropdown-caret-color;
+        border-bottom-color: @component-active-color;
+      }
+    }
+  }
+}
+
+.nav-tabs {
+  > li {
+    // Links rendered as pills
+    > a {
+      color:@nav-pills-active-link-hover-color;
+    }
+    // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color:@btn-default-color;
+      }
+    }
+  }
+}
+
+
+// Pills
+// -------------------------
+.nav-pills {
+  > li {
+    // Links rendered as pills
+    > a {
+      color:@nav-pills-active-link-hover-color;
+      border:1px solid transparent;
+    }
+    // Active state
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color:@btn-default-color;
+        background-color:transparent;
+        border:1px solid #ccc;
+      }
+    }
+  }
+}
+
+// Dropdowns
+// -------------------------
+.nav .caret {
+  border-top-color:     @dropdown-caret-color;
+  border-bottom-color:  @dropdown-caret-color;
+}
+.nav a:hover .caret {
+  border-top-color:     @component-active-color;
+  border-bottom-color:  @component-active-color;
+}
+/* end of navs.less */
+
+/* navbar.less */
+
+// Navbars
+// --------------------------------------------------
+.navbar-brand {
+  color:@navbar-inverse-brand-hover-color;
+  background:url(/sabre/img/headerSlice.png) top right no-repeat;
+  height:60px;
+  padding:12px 32px 12px 18px;
+  width:200px;
+}
+.navbar-nav > li > a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.navbar-fixed-top {
+  border-bottom:#E50000 3px solid;
+}
+
+// Alternate navbars
+// --------------------------------------------------
+.navbar-default {
+  .navbar-brand {
+    color: @navbar-inverse-brand-hover-color;
+  }
+  .navbar-nav {
+    > li > a {
+      color: @btn-default-color;
+    }
+  }
+  .navbar-nav {
+    // Caret should match text color on hover
+    > .dropdown > a:hover .caret,
+    > .dropdown > a:focus .caret {
+      border-top-color:     @component-active-color;
+      border-bottom-color:  @component-active-color;
+    }
+
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-default-link-active-bg;
+        color: @navbar-default-link-active-color;
+        .caret {
+          border-top-color:     @component-active-color;
+          border-bottom-color:  @component-active-color;
+        }
+      }
+    }
+    > .dropdown > a .caret {
+      border-top-color:     @dropdown-caret-color;
+      border-bottom-color:  @dropdown-caret-color;
+    }
+  }
+}
+.navbar-inverse {
+  .navbar-brand {
+    color: @navbar-inverse-brand-hover-color;
+  }
+}
+
+// Sabre navbar
+// --------------------------------------------------
+.navbar-brand img {
+  height:36px;
+}
+h1.navbar-title {
+  font-size: 21px;
+  height: 40px;
+  white-space: nowrap;
+  font-weight: 100;
+  color: #CCC;
+  float: left;
+  margin-top: 18px;
+  margin-left: 18px;
+  letter-spacing: 2px;
+}
+
+/* end of navbar.less */
+
+
+/* labels.less */
+
+.form-group.has-error > label {
+  margin-bottom: 0px;
+}
+.form-group.has-required label:first-child,
+.form-group.has-success label:first-child,
+.form-group.has-warning label:first-child,
+.form-group.has-error label:first-child {
+  width:100%
+}
+
+.form-group.has-required .input-group label:first-child,
+.form-group.has-success .input-group label:first-child,
+.form-group.has-warning .input-group label:first-child,
+.form-group.has-error .input-group label:first-child {
+  width: auto;
+}
+
+/* end of labels.less */
+
+
+/* alerts.less */
+.alert-inverse.alert-success {
+  .alert-variant(@alert-inverse-success-bg; @alert-inverse-success-border; @alert-inverse-success-text);
+}
+.alert-inverse.alert-info {
+  .alert-variant(@alert-inverse-info-bg; @alert-inverse-info-border; @alert-inverse-info-text);
+}
+.alert-inverse.alert-warning {
+  .alert-variant(@alert-inverse-warning-bg; @alert-inverse-warning-border; @alert-inverse-warning-text);
+}
+.alert-inverse.alert-danger {
+  .alert-variant(@alert-inverse-danger-bg; @alert-inverse-danger-border; @alert-inverse-danger-text);
+}
+/* end of alerts.less */
+
+/* list-group.less */
+// radios when vertically stacked
+.input-group .radio {
+  &:first-child {
+    margin-top:0;
+  }
+  &:last-child {
+    margin-bottom:0
+  }
+}
+
+/* end of list-group.less */
+
+
+/* close.less */
+
+.alert-inverse [class^="close"] {
+  color: @close-inverse-color;
+  text-shadow: @close-inverse-text-shadow;
+  .opacity(.5);
+
+  &:hover,
+  &:focus {
+    color: @close-inverse-color;
+    .opacity(.8);
+  }
+}
+
+/* end of close.less */
+
+/* tooltips.less */
+
+.tooltip-inner {
+  padding: 5px 10px;
+}
+.has-error .tooltip.fade.bottom.in {
+  top: 35px;
+  left: 20px;
+  display: block;
+}
+.has-error .tooltip.fade.right.in {
+  position: relative;
+  left: 0px;
+  top: -2px;
+  display: inline-block;
+}
+.has-error .tooltip-inner {
+  background-color: rgba(0, 0, 0, 1);
+  font-weight: normal;
+}
+.has-error .tooltip.bottom .tooltip-arrow {
+  border-bottom-color: rgba(0, 0, 0, 1);
+  left:10%;
+}
+/* end of tooltips.less */
+
+// Sabre Components CSS
+@import "css/sabre_select2.less";

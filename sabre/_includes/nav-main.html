@@ -1,0 +1,33 @@
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <a href="#" class="navbar-brand"><img src="{{ page.base_url }}sabre/img/devCenterLogo.png"></a>
+  <div class="container">
+    <h1 class="navbar-title">UX Prototyping Guide</h1>
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav pull-right">
+        <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
+          <a href="{{ page.base_url }}getting-started">Getting started</a>
+        </li>
+        <li{% if page.slug == "css" %} class="active"{% endif %}>
+          <a href="{{ page.base_url }}css">CSS</a>
+        </li>
+        <li{% if page.slug == "components" %} class="active"{% endif %}>
+          <a href="{{ page.base_url }}components">Components</a>
+        </li>
+        <li{% if page.slug == "js" %} class="active"{% endif %}>
+          <a href="{{ page.base_url }}javascript">JavaScript</a>
+        </li>
+        <li{% if page.slug == "customize" %} class="active"{% endif %}>
+          <a href="{{ page.base_url }}customize">Customize</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

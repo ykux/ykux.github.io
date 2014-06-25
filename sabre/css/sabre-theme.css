@@ -1,0 +1,24 @@
+a {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+a:hover,
+a:focus {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/* type.less */
+h1 small.label {
+  font-size: 65%;
+}
+.page-header {
+  margin: 0 0 20px;
+}
+/* Check dropdown-link-hover-color and dropdown-caret-color #666 */
